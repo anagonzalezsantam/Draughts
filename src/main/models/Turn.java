@@ -1,6 +1,6 @@
 package main.models;
 
-class Turn {
+public class Turn {
 
   private Color color;
 

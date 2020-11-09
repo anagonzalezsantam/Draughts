@@ -44,7 +44,7 @@ public class Coordinate {
         return new Coordinate(this.row + coordinate.row, this.column + coordinate.column);
     }
 
-    Direction getDirection(Coordinate coordinate) {
+    public Direction getDirection(Coordinate coordinate) {
         assert coordinate != null;
         Coordinate substract = coordinate.substract(this);
         for (Direction direction : Direction.values()) 
@@ -53,22 +53,22 @@ public class Coordinate {
         return null;
     }
 
-    boolean isOnDiagonal(Coordinate coordinate) {
+    public boolean isOnDiagonal(Coordinate coordinate) {
         return this.getDirection(coordinate) != null;
     }
 
-    int getDiagonalDistance(Coordinate coordinate) {
+    public int getDiagonalDistance(Coordinate coordinate) {
         assert this.isOnDiagonal(coordinate);
         return Math.abs(this.substract(coordinate).getRow());
     }
 
-    Coordinate getBetweenDiagonalCoordinate(Coordinate coordinate) {
+    public Coordinate getBetweenDiagonalCoordinate(Coordinate coordinate) {
         assert this.getDiagonalDistance(coordinate) == 2;
         final Direction direction = this.getDirection(coordinate);
         return this.plus(direction.getDistanceCoordinate(1));
     }
 
-    List<Coordinate> getBetweenDiagonalCoordinates(Coordinate coordinate){
+    public List<Coordinate> getBetweenDiagonalCoordinates(Coordinate coordinate){
         assert this.isOnDiagonal(coordinate);
         List<Coordinate> coordinates = new ArrayList<Coordinate>();
         final Direction direction = this.getDirection(coordinate);
@@ -80,7 +80,7 @@ public class Coordinate {
         return coordinates;
     }
 
-    List<Coordinate> getDiagonalCoordinates(int level) {
+    public List<Coordinate> getDiagonalCoordinates(int level) {
         List<Coordinate> diagonalCoordinates = new ArrayList<Coordinate>();
         for (Direction direction : Direction.values()) {
             Coordinate diagonalCoordinate = this.plus(direction.getDistanceCoordinate(level));

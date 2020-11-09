@@ -2,12 +2,12 @@ package main.models;
 
 public class Draught extends Piece {
 
-  Draught(Color color) {
+  public Draught(Color color) {
     super(color);
   }
 
   @Override
-  Error isCorrectDiagonalMovement(int amountBetweenDiagonalPieces, int pair, Coordinate... coordinates) {
+  public Error isCorrectDiagonalMovement(int amountBetweenDiagonalPieces, int pair, Coordinate... coordinates) {
     if (amountBetweenDiagonalPieces > 1)
       return Error.TOO_MUCH_EATINGS;
     return null;

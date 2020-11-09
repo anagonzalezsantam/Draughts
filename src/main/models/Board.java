@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-class Board {
+public class Board {
 
     private Piece[][] pieces;
 
-    Board() {
+    public Board() {
         this.pieces = new Piece[Coordinate.getDimension()][Coordinate.getDimension()];
         for (int i = 0; i < Coordinate.getDimension(); i++)
             for (int j = 0; j < Coordinate.getDimension(); j++)
@@ -20,11 +20,11 @@ class Board {
         return this.pieces[coordinate.getRow()][coordinate.getColumn()];
     }
 
-    void put(Coordinate coordinate, Piece piece) {
+    public void put(Coordinate coordinate, Piece piece) {
         this.pieces[coordinate.getRow()][coordinate.getColumn()] = piece;
     }
 
-    Piece remove(Coordinate coordinate) {
+    public Piece remove(Coordinate coordinate) {
         assert this.getPiece(coordinate) != null;
         Piece piece = this.getPiece(coordinate);
         this.put(coordinate, null);

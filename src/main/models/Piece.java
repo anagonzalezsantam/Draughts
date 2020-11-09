@@ -12,7 +12,7 @@ public abstract class Piece {
 		this.color = color;
 	}
 
-	Error isCorrectMovement(List<Piece> betweenDiagonalPieces, int pair, Coordinate... coordinates){
+	public Error isCorrectMovement(List<Piece> betweenDiagonalPieces, int pair, Coordinate... coordinates){
 		assert coordinates[pair] != null;
 		assert coordinates[pair + 1] != null;
 		if (!coordinates[pair].isOnDiagonal(coordinates[pair + 1]))
@@ -23,14 +23,14 @@ public abstract class Piece {
 		return this.isCorrectDiagonalMovement(betweenDiagonalPieces.size(), pair, coordinates);
 	}
 
-	abstract Error isCorrectDiagonalMovement(int amountBetweenDiagonalPieces, int pair, Coordinate... coordinates);
+	public abstract Error isCorrectDiagonalMovement(int amountBetweenDiagonalPieces, int pair, Coordinate... coordinates);
 
-	boolean isLimit(Coordinate coordinate) {
+	public boolean isLimit(Coordinate coordinate) {
 		return coordinate.isFirst() && this.getColor() == Color.WHITE
 				|| coordinate.isLast() && this.getColor() == Color.BLACK;
 	}
 
-	boolean isAdvanced(Coordinate origin, Coordinate target) {
+	public boolean isAdvanced(Coordinate origin, Coordinate target) {
 		assert origin != null;
 		assert target != null;
 		int difference = origin.getRow() - target.getRow();

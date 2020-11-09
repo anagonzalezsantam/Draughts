@@ -8,7 +8,7 @@ public class Game {
 	private Board board;
 	private Turn turn;
 
-	Game(Board board) {
+	public Game(Board board) {
 		this.turn = new Turn();
 		this.board = board;
 	}
