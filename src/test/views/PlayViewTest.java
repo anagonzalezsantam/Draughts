@@ -10,16 +10,12 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.times;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.spy;
 
 import main.controllers.PlayController;
 import main.models.Color;
 import main.models.Coordinate;
-import main.models.Game;
-import main.models.State;
 import main.utils.Console;
 import main.views.PlayView;
-import test.models.GameBuilder;
 
 public class PlayViewTest {
 
