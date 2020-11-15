@@ -4,9 +4,9 @@ import main.controllers.InteractorController;
 import main.models.Coordinate;
 import main.models.Piece;
 
-class GameView extends SubView {
+public class GameView extends SubView {
 
-    void write(InteractorController controller) {
+    public void write(InteractorController controller) {
         assert controller != null;
         final int DIMENSION = controller.getDimension();
         this.writeNumbersLine(DIMENSION);

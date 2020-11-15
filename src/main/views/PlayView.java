@@ -9,7 +9,7 @@ import main.models.Color;
 import main.models.Coordinate;
 import main.models.Error;
 
-class PlayView extends SubView {
+public class PlayView extends SubView {
     
     private static final String COLOR_PARAM = "#color";
     private static final String[] COLOR_VALUES = { "blancas", "negras" };
@@ -24,7 +24,7 @@ class PlayView extends SubView {
         super();
     }
 
-    void interact(PlayController playController) {
+    public void interact(PlayController playController) {
         assert playController != null;
         Error error;
         do {
