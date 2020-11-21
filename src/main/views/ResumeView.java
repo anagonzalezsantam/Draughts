@@ -5,7 +5,7 @@ import main.utils.YesNoDialog;
 
 public class ResumeView extends SubView {
 
-    private static final String MESSAGE = "Â¿QuerÃ©is jugar otra";
+    private static final String MESSAGE = "¿Queréis jugar otra";
     
     private YesNoDialog yesNoDialog;
 

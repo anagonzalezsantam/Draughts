@@ -52,6 +52,8 @@ public abstract class Piece {
 		return Piece.CODES[this.color.ordinal()];
 	}
 
+	public abstract Piece copy();
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
