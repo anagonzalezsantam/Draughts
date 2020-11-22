@@ -60,7 +60,7 @@ public class Board {
     Color getColor(Coordinate coordinate) {
         final Piece piece = this.getPiece(coordinate);
         if (piece == null)
-            return null;
+            return Color.NULL_COLOR;
         return piece.getColor();
     }
 

@@ -17,7 +17,14 @@ public class Turn {
   }
 
   Color getOppositeColor() {
-    return Color.values()[(this.color.ordinal() + 1) % 2];
+	  switch(this.color) {
+		  case WHITE:
+	          return Color.BLACK;
+	      case BLACK:
+	          return Color.WHITE;
+	      default:
+	      	return Color.NULL_COLOR;
+	  }
   }
 
   @Override
