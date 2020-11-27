@@ -2,11 +2,15 @@ package main.controllers;
 
 import main.models.Game;
 import main.models.State;
+import main.views.View;
 
 public class ResumeController extends InteractorController {
 
+	private View view;
+	
 	public ResumeController(Game game, State state) {
         super(game, state);
+        this.view = new View();
 	}
 
 	public void next() {
@@ -18,10 +22,11 @@ public class ResumeController extends InteractorController {
 		this.game.reset();
 	}
 
-    @Override
-	public void accept(InteractorControllersVisitor controllersVisitor) {
-		assert controllersVisitor != null;
-		controllersVisitor.visit(this);
-	}
+    public void control() {
+        if (view.resumeViewRead())
+            this.reset();
+        else
+            this.next();
+    }
 
 }

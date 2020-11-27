@@ -7,10 +7,12 @@ public class Game {
 
 	private Board board;
 	private Turn turn;
+	private Checker checker;
 
 	public Game(Board board) {
 		this.turn = new Turn();
 		this.board = board;
+		this.checker = new Checker(this.board, this.turn);
 	}
 
 	public Game() {
@@ -55,14 +57,12 @@ public class Game {
 	private Error isCorrectPairMove(int pair, Coordinate... coordinates) {
 		assert coordinates[pair] != null;
 		assert coordinates[pair + 1] != null;
-		if (board.isEmpty(coordinates[pair]))
-			return Error.EMPTY_ORIGIN;
-		if (this.turn.getOppositeColor() == this.board.getColor(coordinates[pair]))
-			return Error.OPPOSITE_PIECE;
-		if (!this.board.isEmpty(coordinates[pair + 1]))
-			return Error.NOT_EMPTY_TARGET;
-		List<Piece> betweenDiagonalPieces = 
-			this.board.getBetweenDiagonalPieces(coordinates[pair], coordinates[pair + 1]);
+		
+		Error error = this.checker.check(pair, coordinates);
+		if(error != null) {
+			return error;
+		}
+		List<Piece> betweenDiagonalPieces = this.board.getBetweenDiagonalPieces(coordinates[pair], coordinates[pair + 1]);
 		return this.board.getPiece(coordinates[pair]).isCorrectMovement(betweenDiagonalPieces, pair, coordinates);
 	}
 
@@ -154,10 +154,6 @@ public class Game {
 
 	public Color getTurnColor() {
 		return this.turn.getColor();
-	}
-
-	private Color getOppositeTurnColor() {
-		return this.turn.getOppositeColor();
 	}
 
 	public Piece getPiece(Coordinate coordinate) {

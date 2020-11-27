@@ -15,6 +15,6 @@ public abstract class InteractorController extends Controller {
 		return this.game.getPiece(coordinate);
 	}
 
-	abstract public void accept(InteractorControllersVisitor controllersVisitor);
+	public abstract void control();
 
 }

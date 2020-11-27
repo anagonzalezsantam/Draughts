@@ -20,7 +20,7 @@ public class PlayView extends SubView {
     private static final String LOST_MESSAGE = "Derrota!!! No puedes mover tus fichas!!!";
     private String string;
 
-    PlayView() {
+    public PlayView() {
         super();
     }
 
@@ -44,24 +44,25 @@ public class PlayView extends SubView {
         } while (error != null);
     }
 
-    private String read(Color color) {
+    public String read(Color color) {
         final String titleColor = PlayView.PROMPT.replace(PlayView.COLOR_PARAM ,PlayView.COLOR_VALUES[color.ordinal()]);
-        return this.console.readString(titleColor);
+        this.string = this.console.readString(titleColor);
+        return string;
     }
 
-    private boolean isCanceledFormat() {
+    public boolean isCanceledFormat() {
         return string.equals(PlayView.CANCEL_FORMAT);
     }
 
-    private boolean isMoveFormat() {
+    public boolean isMoveFormat() {
         return Pattern.compile(PlayView.MOVEMENT_FORMAT).matcher(string).find();
     }
 
-    private void writeError(){
+    public void writeError(){
         this.console.writeln(PlayView.ERROR_MESSAGE);
     }
 
-    private Coordinate[] getCoordinates() {
+    public Coordinate[] getCoordinates() {
         assert this.isMoveFormat();
         List<Coordinate> coordinateList = new ArrayList<Coordinate>();
         while (string.length() > 0){
@@ -77,7 +78,7 @@ public class PlayView extends SubView {
         return coordinates;
     }
 
-    private void writeLost() {
+    public void writeLost() {
         this.console.writeln(LOST_MESSAGE);
     }
 
